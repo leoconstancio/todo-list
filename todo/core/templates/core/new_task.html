@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="col-md-12 bg-light" style="padding: 20px">
+
+  <h2>Add Task</h2>
+  <hr>
+
+  <form class="" action="" method="post">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="{{ form.category.id_for_label }}">Category</label>
+        {{ form.category.errors}}
+        {{ form.category }}
+      </div>
+
+      <div class="form-group">
+        <label for="{{ form.description.id_for_label }}">Description:</label>
+        {{ form.description.errors}}
+        {{ form.description }}
+      </div>
+
+      <div class="form-group">
+        <label for="{{ form.date.id_for_label }}">Date:</label>
+           {{ form.date.errors}}
+        {{ form.date }}
+      </div>
+
+      <div class="form-group">
+        <label for="{{ form.time.id_for_label }}">Time:</label>
+           {{ form.time.errors}}
+        {{ form.time }}
+      </div>
+
+      <div class="form-group">
+        <label for="{{ form.priority.id_for_label }}">Priority:</label>
+           {{ form.priority.errors}}
+        {{ form.priority }}
+      </div>
+
+      <button type="submit" class="btn btn-primary">Save</button>
+      <a href="/" class="btn btn-secondary" role="button">Cancel</a>
+
+    </form>
+
+</div>
+
+{% endblock body %}
