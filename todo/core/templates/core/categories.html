@@ -17,14 +17,12 @@
 
       <table class="table table-sm mt-3">
         <thead>
-          <th>#</th>
           <th>Category name</th>
           <th colspan="2" style="text-align: center">Actions</th>
         </thead>
         <tbody>
           {% for c in list_categories %}
           <tr>
-            <td>{{ c.id }}</td>
             <td>{{ c.name }}</td>
             <td style="text-align: right"><a class="text-muted" href="{% url 'edit_category' c.id %}">editar</a></td>
             <td style="text-align: left"><a class="text-muted" href="{% url 'delete_category' c.id %}">excluir</a></td>

@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
@@ -14,7 +13,9 @@ def add_user(request):
             create_user = form.save()
             create_user.set_password(create_user.password)
             create_user.save()
-            return HttpResponse("User created with success!")
+            messages.success(request, "User created with success! Log in...")
+            return redirect('accounts:user_login')
+
     else:
         form = UserForm()
     return render(request, 'accounts/create_user.html', {'form': form})
@@ -30,7 +31,7 @@ def user_login(request):
             login(request, verify_user)
             return redirect(request.GET.get('next', '/'))
         else:
-            messages.error(request, "Username or Password is invalid!")
+            messages.error(request, "Username or password is invalid! Try again...")
 
     return render(request, 'accounts/login.html')
 
